@@ -1,0 +1,84 @@
+﻿@model IEnumerable<ContosoUniversity.Models.Course>
+
+@{
+    ViewData["Title"] = "Courses";
+}
+
+<h2>Courses</h2>
+
+<p>
+    <a asp-action="_Create" ajax-target="#appendRow" eval="appendRow($ajaxTarget, data)">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CourseID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Credits)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Department)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody id="appendTbody">
+
+
+        @{await Html.RenderPartialAsync("_Index", Model);}
+    </tbody>
+</table>
+
+
+<form asp-action="_Create" eval="appendTbody($ajaxTarget, data)" ajax-target="#appendTbody">
+
+    <table class="table">
+        <tbody id="appendRow"> @* _Create.cshtml will be here *@ </tbody>
+    </table>
+    <input id="btnSave" type="submit" value="Add All Course" class="btn btn-primary pull-right hide" />
+</form>
+
+
+
+<script>
+    function deleteCourse($this, data) {
+        if (data == true) {
+            $this.closest('tr').remove();
+
+        }
+    }
+
+    function editCourse($this, data) {
+        $this.closest('tr').replaceWith(data);
+
+    }
+
+    function appendTbody($ajaxTarget, data) {
+        $ajaxTarget.append(data);
+        $('#appendRow').html('');
+        $('#btnSave').addClass('hide');
+    }
+
+    function appendRow($ajaxTarget, data) {
+        $ajaxTarget.append(data);
+        $('#btnSave').removeClass('hide');
+    }
+
+    $(function () {
+        $('#appendRow').on('click', '.btn-circle', function () {
+            $(this).closest('tr').remove();
+            if ($('#appendRow').find('tr').length == 0) {
+                $('#btnSave').addClass('hide');
+
+            } else {
+                $('#btnSave').removeClass('hide');
+            }
+        })
+    })
+
+</script>

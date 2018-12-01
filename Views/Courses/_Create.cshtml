@@ -1,0 +1,27 @@
+﻿@model ContosoUniversity.Models.Course
+
+<tr>
+    <td>
+        <input asp-for="CourseID" class="form-control" placeholder="Course Number..." />
+        <span asp-validation-for="CourseID" class="text-danger"></span>
+    </td>
+    <td>
+        <input asp-for="Title" class="form-control" placeholder="Course Title..." />
+        <span asp-validation-for="Title" class="text-danger"></span>
+    </td>
+    <td>
+        <input asp-for="Credits" class="form-control" placeholder="Course Credits..." />
+        <span asp-validation-for="Credits" class="text-danger"></span>
+    </td>
+    <td>
+        <select asp-for="DepartmentID" class="form-control" asp-items="ViewBag.DepartmentID">
+            <option value="">-- Select Department --</option>
+        </select>
+        <span asp-validation-for="DepartmentID" class="text-danger" />
+    </td>
+    <td>
+        <button type="button" class="btn btn-warning btn-circle"><i class="glyphicon glyphicon-remove"></i></button>
+    </td>
+</tr>
+
+@{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

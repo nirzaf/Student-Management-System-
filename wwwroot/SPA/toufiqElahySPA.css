@@ -1,0 +1,29 @@
+﻿/*.spa-loader:not(:empty) {
+    background: rgba( 255, 255, 255, 1 ) url('loading.gif') 50% 50% no-repeat;
+}
+
+.spa-loader:empty:after {
+    content: url('inline.gif');
+}
+
+.spa-loader * {
+    opacity: .8;
+}*/
+
+#toufiqElahy:not(.spa-loader) .spa-loader:empty:after {
+    content: url('inline.gif');
+    /*background: rgba( 255, 255, 255, 1 ) url('inline.gif') 50% 50% no-repeat !important;*/
+}
+
+#toufiqElahy:not(.spa-loader) .spa-loader:not(:empty) {
+    /*content: url('inline.gif');*/
+    background: rgba( 255, 255, 255, 1 ) url('inline.gif') 50% 50% no-repeat !important;
+}
+
+#toufiqElahy.spa-loader {
+    background: rgba( 255, 255, 255, 1 ) url('loading.gif') 50% 50% no-repeat !important;
+}
+
+.spa-loader * {
+    opacity: .8;
+}

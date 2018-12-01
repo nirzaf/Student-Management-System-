@@ -1,0 +1,16 @@
+﻿@model ContosoUniversity.Models.Enrollment
+
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => modelItem.Course.Title)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => modelItem.Grade)
+    </td>
+    <td>
+        <button eval="deleteEnrollment($this, data)" href="@Url.Action("deleteEnrollment",new { enrollmentID =Model.EnrollmentID})"
+                type="button" class="btn btn-warning btn-circle">
+            <i class="glyphicon glyphicon-remove"></i>
+        </button>
+    </td>
+</tr>

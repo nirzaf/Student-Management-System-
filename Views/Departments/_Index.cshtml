@@ -1,0 +1,21 @@
+﻿@model ContosoUniversity.Models.Department
+
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => modelItem.Name)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => modelItem.Budget)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => modelItem.StartDate)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => modelItem.Administrator.FullName)
+    </td>
+    <td>
+        <a class="btnEdit" data-target="#globalModal" ajax-target="#globalModalContent" asp-action="Edit" asp-route-id="@Model.DepartmentID">Edit</a> |
+        <a data-target="#globalModal" ajax-target="#globalModalContent" asp-action="Details" asp-route-id="@Model.DepartmentID">Details</a> |
+        <a eval="deleteDepartment(data, $this)" onclick="confirm_delete(event)" asp-action="_Delete" asp-route-id="@Model.DepartmentID">Delete</a>
+    </td>
+</tr>

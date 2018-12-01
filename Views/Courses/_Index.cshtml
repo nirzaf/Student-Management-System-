@@ -1,0 +1,24 @@
+﻿@model IEnumerable<ContosoUniversity.Models.Course>
+
+@foreach (var item in Model)
+        {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CourseID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Credits)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Department.Name)
+        </td>
+        <td>
+            <a eval="editCourse($this, data)" asp-action="Edit" asp-route-id="@item.CourseID">Edit</a> |
+            <a asp-action="Details" asp-route-id="@item.CourseID">Details</a> |
+            <a eval="deleteCourse($this, data)" asp-action="Delete" asp-route-id="@item.CourseID">Delete</a>
+        </td>
+    </tr>
+        }

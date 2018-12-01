@@ -1,0 +1,63 @@
+﻿@model IEnumerable<ContosoUniversity.Models.Course>
+
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal">&times;</button>
+    @*<h4 class="modal-title">Modal Header</h4>*@
+</div>
+<div class="modal-body">
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.CourseID)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Title)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Credits)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Department)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+                {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CourseID)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Title)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Credits)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Department.Name)
+                    </td>
+                    <td>
+                        <a eval="addEnrollment($ajaxTarget, $this, data)" ajax-target="#tblEnrollment" asp-action="addEnrollment" asp-route-courseID="@item.CourseID" asp-route-studentID="@ViewBag.StudentID">Add</a>
+                    </td>
+                </tr>
+                }
+        </tbody>
+    </table>
+
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+</div>
+
+
+<script>
+    function addEnrollment($ajaxTarget, $this, data) {
+        $ajaxTarget.append(data);
+        $this.closest('tr').remove();
+
+    }
+</script>

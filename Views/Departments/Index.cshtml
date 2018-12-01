@@ -1,0 +1,82 @@
+﻿@model IEnumerable<ContosoUniversity.Models.Department>
+
+@{
+    ViewData["Title"] = "Departments";
+}
+
+<h2>Departments</h2>
+
+<p>
+    <a asp-action="Create" data-target="#globalModal" ajax-target="#globalModalContent">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Budget)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StartDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Administrator)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody id="tblDepartment">
+        @foreach (var item in Model)
+        {
+            await Html.RenderPartialAsync("_Index", item);
+
+            @*<tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Budget)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StartDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Administrator.FullName)
+                </td>
+                <td>
+                    <a data-target="#globalModal" ajax-target="#globalModalContent" asp-action="Edit" asp-route-id="@item.DepartmentID">Edit</a> |
+                    <a data-target="#globalModal" ajax-target="#globalModalContent" asp-action="Details" asp-route-id="@item.DepartmentID">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.DepartmentID">Delete</a>
+                </td>
+            </tr>*@
+        }
+    </tbody>
+</table>
+
+<script>
+    function deleteDepartment(data, $this) {
+        if (data == true) {
+            $this.closest('tr').remove();
+
+        }
+    }
+
+    function confirm_delete(event) {
+        //console.log(event);
+        if (confirm('are you sure?') == false) {
+            //console.log('come');
+            event.stopPropagation();
+            event.preventDefault();
+        }
+    }
+
+    $(function () {
+        $('#tblDepartment').on('click', '.btnEdit', function () {
+            $this = $(this);
+            $this.closest('tbody').find('tr').removeClass('btnEdit');
+            $this.closest('tr').addClass('btnEdit');
+        })
+    })
+</script>

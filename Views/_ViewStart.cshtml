@@ -1,0 +1,11 @@
+﻿@{
+    if (Context.Request.Headers["X-Requested-With"] == "XMLHttpRequest")//if ajax request
+    {
+        Context.Response.Headers["Location"] = Microsoft.AspNetCore.Http.Extensions.UriHelper.GetDisplayUrl(Context.Request);//RawUrl
+        Context.Response.Headers["Cache-Control"] = "no-store";//context.HttpContext.Response.Cache.SetNoStore(); //stop caching(partial content) on client's browser
+    }
+    else
+    {
+        Layout = "_Layout";
+    }
+}

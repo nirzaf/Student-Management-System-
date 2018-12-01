@@ -1,0 +1,18 @@
+﻿@model ContosoUniversity.Models.Student
+
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => modelItem.LastName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => modelItem.FirstMidName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => modelItem.EnrollmentDate)
+    </td>
+    <td>
+        <a ajax-target="#studentOperation" asp-action="Edit" asp-route-id="@Model.ID">Edit</a> |
+        <a ajax-target="#studentOperation" asp-action="Details" asp-route-id="@Model.ID">Details</a> |
+        <a ajax-target="#studentOperation" asp-action="Delete" asp-route-id="@Model.ID">Delete</a>
+    </td>
+</tr>

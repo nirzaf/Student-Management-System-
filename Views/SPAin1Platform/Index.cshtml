@@ -1,0 +1,36 @@
+﻿
+<button id="showDiv" type="button" class="btn btn-primary btn-lg">Student and Course</button>
+
+<button href="@Url.Action("Index","Instructors")" ajax-target="#Instructor" type="button" class="btn btn-success btn-lg">Instructor</button>
+<button href="@Url.Action("Index","Departments")" ajax-target="#Department" type="button" class="btn btn-info btn-lg">Department</button>
+
+<br /><br />
+
+<div id="StudentCourse" class="hide">
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs nav-justified" role="tablist">
+        <li><a href="@Url.Action("Index","Students")#home" ajax-target="#home" role="tab" data-toggle="tab">Stuents</a></li>
+        <li><a href="@Url.Action("Index","Courses")#home" ajax-target="#home" role="tab" data-toggle="tab">Courses</a></li>
+    </ul>
+
+    <!-- Tab panes -->
+    <div class="tab-content">
+        <div class="tab-pane" id="home"></div>
+    </div>
+</div>
+
+<br /><br />
+<div id="Instructor"></div>
+<br /><br />
+<div id="Department"></div>
+
+
+
+<script>
+    $(function () {
+        $('#showDiv').click(function () {
+            $('#StudentCourse').toggleClass('hide');
+        })
+    })
+</script>
+

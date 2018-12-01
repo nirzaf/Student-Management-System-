@@ -1,0 +1,33 @@
+﻿@model ContosoUniversity.Models.Course
+
+<tr>
+    <td colspan="6">
+        <form asp-action="Edit" eval="editCourse($this, data)">
+            <div class="row">
+                <div class="col-xs-1">
+                    <input type="hidden" asp-for="CourseID" />
+                    @Html.DisplayFor(model => model.CourseID)
+                </div>
+                <div class="col-xs-3">
+                    <input asp-for="Title" class="form-control" placeholder="Course Title..." />
+                    <span asp-validation-for="Title" class="text-danger"></span>
+                </div>
+                <div class="col-xs-2">
+                    <input asp-for="Credits" class="form-control" placeholder="Course Credits..." />
+                    <span asp-validation-for="Credits" class="text-danger"></span>
+                </div>
+                <div class="col-xs-3">
+                    <select asp-for="DepartmentID" class="form-control" asp-items="ViewBag.DepartmentID">
+                        <option value="">-- Select Department --</option>
+                    </select>
+                    <span asp-validation-for="DepartmentID" class="text-danger" />
+                </div>
+                <div>
+                    <input type="submit" value="Update" class="btn btn-primary" />
+                </div>
+            </div>
+        </form>
+    </td>
+</tr>
+
+@{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
