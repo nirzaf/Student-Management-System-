@@ -1,6 +1,6 @@
-# Contoso University sample app
+# University Management app
 
-Contoso University demonstrates how to use Entity Framework Core in an
+University Management  demonstrates how to use Entity Framework Core in an
 ASP.NET Core MVC web application.
 
 ## Build it from scratch
